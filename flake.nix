@@ -27,6 +27,16 @@
           treefmt = {
             projectRootFile = "flake.nix";
             programs.nixfmt.enable = true;
+            programs.perltidy.enable = true;
+            settings.formatter.perltidy = {
+              perltidyrc = ./.perltidyrc;
+              includes = [
+                "*.pl"
+                "*.PL"
+                "*.pm"
+                "*.PM"
+              ];
+            };
           };
 
           devShells.default = pkgs.mkShell {
